@@ -1,0 +1,20 @@
+10:23:04 **** Incremental Build of configuration Debug for project interfacing4x4Keypad ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -DDEBUG -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "interfacing4x4Keypad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\VRUnleashed\Documents\Embedded-C\My_workspace\target\interfacing4x4Keypad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="interfacing4x4Keypad.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: interfacing4x4Keypad.elf
+ 
+arm-none-eabi-objdump -h -S  interfacing4x4Keypad.elf  > "interfacing4x4Keypad.list"
+arm-none-eabi-objcopy  -O binary  interfacing4x4Keypad.elf  "interfacing4x4Keypad.bin"
+arm-none-eabi-size   interfacing4x4Keypad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4092	    108	   1580	   5780	   1694	interfacing4x4Keypad.elf
+Finished building: default.size.stdout
+Finished building: interfacing4x4Keypad.bin
+Finished building: interfacing4x4Keypad.list
+ 
+ 
+ 
+
+10:23:05 Build Finished. 0 errors, 0 warnings. (took 795ms)
+

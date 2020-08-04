@@ -1,0 +1,11 @@
+06:56:07 **** Rebuild of configuration Debug for project cars ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:21:18: warning: unused variable 'carFord' [-Wunused-variable]
+   21 |  struct carModel carFord = {.carWeight = 1900.96, .carMaxSpeed = 160, .carNumber = 4031, .carPrice = 35000};
+      |                  ^~~~~~~
+gcc -o cars.exe main.o 
+
+06:56:07 Build Finished. 0 errors, 1 warnings. (took 531ms)
+

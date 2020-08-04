@@ -1,0 +1,12 @@
+core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+stm32f401xx_gpio_driver.c:18:6:hal_gpio_configure_pin_mode	24	static
+stm32f401xx_gpio_driver.c:32:6:hal_gpio_configure_pin_speed	24	static
+stm32f401xx_gpio_driver.c:45:6:hal_gpio_configure_pin_otype	24	static
+stm32f401xx_gpio_driver.c:60:6:hal_gpio_configure_pin_pupd	24	static
+stm32f401xx_gpio_driver.c:74:6:hal_gpio_set_alt_function	24	static
+stm32f401xx_gpio_driver.c:93:9:hal_gpio_read_from_pin	24	static
+stm32f401xx_gpio_driver.c:110:6:hal_gpio_write_to_pin	24	static
+stm32f401xx_gpio_driver.c:125:6:hal_gpio_init	16	static
+stm32f401xx_gpio_driver.c:139:6:hal_gpio_configure_interrupt	16	static
+stm32f401xx_gpio_driver.c:159:6:hal_gpio_enable_interrupt	16	static
+stm32f401xx_gpio_driver.c:170:7:hal_gpio_clear_interrupt	16	static

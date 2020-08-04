@@ -1,0 +1,23 @@
+10:05:35 **** Build of configuration Debug for project STM32F401xx_DRIVERS ****
+make -j4 all 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f401xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F401xE -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f401xx_gpio_driver.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f401xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f401xx_gpio_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f401retx.o" "../Core/Startup/startup_stm32f401retx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F401xE -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F401xE -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+arm-none-eabi-gcc -o "STM32F401xx_DRIVERS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\VRUnleashed\Documents\Embedded-C\My_workspace\target\STM32F401xx_DRIVERS\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F401xx_DRIVERS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F401xx_DRIVERS.elf
+ 
+arm-none-eabi-size   STM32F401xx_DRIVERS.elf 
+arm-none-eabi-objdump -h -S  STM32F401xx_DRIVERS.elf  > "STM32F401xx_DRIVERS.list"
+arm-none-eabi-objcopy  -O binary  STM32F401xx_DRIVERS.elf  "STM32F401xx_DRIVERS.bin"
+   text	   data	    bss	    dec	    hex	filename
+   1592	      8	   1568	   3168	    c60	STM32F401xx_DRIVERS.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F401xx_DRIVERS.bin
+ 
+Finished building: STM32F401xx_DRIVERS.list
+ 
+
+10:05:37 Build Finished. 0 errors, 0 warnings. (took 2s.340ms)
+

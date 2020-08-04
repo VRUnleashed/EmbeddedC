@@ -1,0 +1,23 @@
+/*
+ * stm32f401xx_spi_driver.c
+ *
+ *  Created on: Jun 30, 2020
+ *      Author: VRUnleashed
+ */
+
+#include <stdint.h>
+#include "stm32f401xx_spi_driver.h"
+
+ /***
+	* @brief  Configures master or slave mode
+	* @param  *SPIx : Base address of the SPI
+    * @param  master : if 1 , then configured for master
+	* @retval None
+	*/
+void hal_spi_configure_device_mode(SPI_TypeDef *SPIx, uint32_t master) {
+	if(master) {
+		SPIx->CR1 |= SPI_REG_CR1_MSTR;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_MSTR;
+	}
+}

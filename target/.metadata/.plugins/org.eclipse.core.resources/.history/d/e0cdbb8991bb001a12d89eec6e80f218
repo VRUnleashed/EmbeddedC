@@ -1,0 +1,131 @@
+/*
+ * stm32f401xx_spi_driver.c
+ *
+ *  Created on: Jun 30, 2020
+ *      Author: VRUnleashed
+ */
+
+#include <stdint.h>
+#include "stm32f401xx_spi_driver.h"
+
+ /***
+	* @brief  Configures master or slave mode
+	* @param  *SPIx : Base address of the SPI
+    * @param  master : if 1 , then configured for master
+	* @retval None
+	*/
+void hal_spi_configure_device_mode(SPI_TypeDef *SPIx, uint32_t master) {
+	if(master) {
+		SPIx->CR1 |= SPI_REG_CR1_MSTR;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_MSTR;
+	}
+}
+
+
+/***
+   * @brief  Configures SPI clk phase and polarity
+   * @param  *SPIx : Base address of the SPI
+   * @param  phase : configures phase ,
+   * @param  polarity : configures polarity
+   * @retval None
+   */
+void hal_spi_configure_phase_and_polarity(SPI_TypeDef *SPIx,uint32_t phase_value, uint32_t polarity) {
+	if(phase_value) {
+		SPIx->CR1 |= SPI_REG_CR1_CPHA;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_CPHA;
+	}
+
+	if(polarity) {
+		SPIx->CR1 |= SPI_REG_CR1_CPOL;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_CPOL;
+	}
+}
+
+
+/**
+  * @brief  Configures SPI datasize
+  * @param  *SPIx : Base address of the SPI
+  * @param  datasize : data size to be configured  ,
+  * @param  lsbmsbfirst : if 1, lsb will be sent first.
+  * @retval None
+  */
+void hal_spi_configure_datasize(SPI_TypeDef *SPIx, uint32_t datasize_16, uint32_t lsbfirst) {
+	if(datasize_16) {
+		SPIx->CR1 |= SPI_REG_CR1_DFF;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_DFF;
+	}
+
+	if(lsbfirst) {
+		SPIx->CR1 |= SPI_CR1_LSBFRIST;
+	} else {
+		SPIx->CR1 &= ~SPI_CR1_LSBFRIST;
+	}
+}
+
+
+/**
+	* @brief  Configures the NSS pin of the master
+	* @param  *SPIx : Base address of the SPI
+	* @retval None
+	*/
+void hal_spi_configure_nss_master(SPI_TypeDef *SPIx, uint32_t ssm_enable) {
+	if(ssm_enable) {
+		SPIx->CR1 |= SPI_REG_CR1_SSM;
+		SPIx->CR1 |= SPI_REG_CR1_SSI;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_SSM;
+	}
+}
+
+
+/**
+	* @brief  Configures the NSS pin of the slave
+	* @param  *SPIx : Base address of the SPI
+	* @retval None
+	*/
+void hal_spi_configure_nss_slave(SPI_TypeDef *SPIx, uint32_t ssm_enable) {
+	if(ssm_enable) {
+		SPIx->CR1 |= SPI_REG_CR1_SSM;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_SSM;
+	}
+}
+
+
+/**
+	* @brief  Enables the SPI device
+	* @param  *SPIx : Base address of the SPI
+	* @retval None
+	*/
+void hal_spi_enable(SPI_TypeDef *SPIx) {
+	if(!(SPIx->CR1 & SPI_REG_CR1_SPE))
+		SPIx->CR1 |= SPI_REG_CR1_SPE;
+}
+
+
+/**
+	* @brief  Disables the SPI device
+	* @param  *SPIx : Base address of the SPI
+	* @retval None
+	*/
+void hal_spi_disable(SPI_TypeDef *SPIx) {
+	SPIx->CR1 &= ~SPI_REG_CR1_SPE;
+}
+
+
+/**
+  * @brief  API used to do master data transmission
+  * @param  *SPIx : Base address of the SPI
+  * @param  *buffer : pointer to the tx buffer
+  * @param  len : len of tx data
+  * @retval none
+  */
+void hal_spi_master_tx(spi_handle_t *spi_handle,uint8_t *buffer, uint32_t len) {
+	spi_handle->pTxBuffPtr = buffer;
+	spi_handle->TxXferSize = len;
+	spi_handle->TxXferCount = len;
+}

@@ -1,0 +1,45 @@
+/*
+ * stm32f401xx_spi_driver.c
+ *
+ *  Created on: Jun 30, 2020
+ *      Author: VRUnleashed
+ */
+
+#include <stdint.h>
+#include "stm32f401xx_spi_driver.h"
+
+ /***
+	* @brief  Configures master or slave mode
+	* @param  *SPIx : Base address of the SPI
+    * @param  master : if 1 , then configured for master
+	* @retval None
+	*/
+void hal_spi_configure_device_mode(SPI_TypeDef *SPIx, uint32_t master) {
+	if(master) {
+		SPIx->CR1 |= SPI_REG_CR1_MSTR;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_MSTR;
+	}
+}
+
+
+/***
+   * @brief  Configures SPI clk phase and polarity
+   * @param  *SPIx : Base address of the SPI
+   * @param  phase : configures phase ,
+   * @param  polarity : configures polarity
+   * @retval None
+   */
+void hal_spi_configure_phase_and_polarity(SPI_TypeDef *SPIx,uint32_t phase_value, uint32_t polarity) {
+	if(phase_value) {
+		SPIx->CR1 |= SPI_REG_CR1_CPHA;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_CPHA;
+	}
+
+	if(polarity) {
+		SPIx->CR1 |= SPI_REG_CR1_CPOL;
+	} else {
+		SPIx->CR1 &= ~SPI_REG_CR1_CPOL;
+	}
+}
